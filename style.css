@@ -15,10 +15,6 @@ html {
   scroll-behavior: smooth;
 }
 
-p {
-  color: rgb(85, 85, 85);
-}
-
 /* TRANSITION */
 
 a,
@@ -46,13 +42,11 @@ nav {
 }
 
 a {
-  color: black;
   text-decoration: none;
   text-decoration-color: white;
 }
 
 a:hover {
-  color: grey;
   text-decoration: underline;
   text-underline-offset: 1rem;
   text-decoration-color: rgb(181, 181, 181);
@@ -372,7 +366,6 @@ article .icon {
 
 .project-title {
   margin: 1rem;
-  color: black;
 }
 
 .project-btn {
@@ -429,4 +422,137 @@ footer {
 
 footer p {
   text-align: center;
+}
+
+:root {
+  --bg: white;
+  --text: black;
+  --card-bg: rgb(250, 250, 250);
+  --border: rgb(163, 163, 163);
+  --btn-border: rgb(53, 53, 53);
+  --mode: rgb(0, 0, 0);
+}
+
+[data-theme="dark"] {
+  --bg: #121212;
+  --text: #e0e0e0;
+  --card-bg: #1e1e1e;
+  --border: #4b4b4b;
+  --btn-border: #fff;
+  --mode: #e1f7ff;
+  --icon-color: brightness(0) saturate(100%) invert(45%) sepia(100%) saturate(2000%) hue-rotate(210deg) brightness(100%) contrast(100%);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.4s, color 0.4s;
+}
+
+a { color: var(--text); }
+.color-container, .details-container, .contact-info-upper-container {
+  background: var(--card-bg);
+  border-color: var(--border);
+}
+.btn-color-1, .btn-color-2 { border-color: var(--btn-border); }
+.hamburger-icon span { background-color: var(--text); }
+.icon {filter: var(--icon-color);}
+.project-title, .project-btn, .experience-sub-title, .btn-color-2 { color: var(--text); }
+
+/* Toggle Button Style */
+#theme-toggle {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+  width: 50px;
+  height: 50px;
+  background: var(--mode);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* Enhanced Fade-In on Scroll (staggered for children) */
+.fade-in {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Stagger children (e.g., cards, articles) */
+.fade-in.show > * {
+  opacity: 1 !important;
+  transform: none !important;
+  transition-delay: calc(0.1s * var(--delay));
+}
+
+/* Profile Picture Floating Animation */
+.section__pic-container img {
+  animation: float 6s ease-in-out infinite;
+}
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-7px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Typewriter Effect for Hero Title */
+.title-typewriter {
+  overflow: hidden;
+  border-right: 0.15em solid var(--text);
+  white-space: nowrap;
+  animation: typing 3s steps(30, end) forwards, blink-caret 0.75s step-end infinite;
+}
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--text); }
+}
+
+/* Enhanced Card Hover (Projects & Details) */
+.details-container, .color-container {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.details-container:hover, .color-container:hover {
+  transform: translateY(-15px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* Button Pulse Hover */
+.btn:hover {
+  animation: pulse 0.6s ease;
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Icon Gentle Bounce on Hover */
+.icon:hover {
+  animation: bounce 0.6s ease;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Arrow Pulse */
+.arrow {
+  animation: arrowPulse 2s infinite;
+}
+@keyframes arrowPulse {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+  100% { transform: translateY(0); }
 }
