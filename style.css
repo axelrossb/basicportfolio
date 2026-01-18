@@ -56,6 +56,12 @@ a:hover {
   font-size: 2rem;
 }
 
+.logo-img {
+  padding-top: 1rem;
+  height: 80px; /* adjust size */
+  width: auto;
+}
+
 .logo:hover {
   cursor: default;
 }
@@ -431,6 +437,13 @@ article .icon {
 
 .email-icon {
   height: 2.5rem;
+}
+
+.main-contact-icon {
+  width: 250px;      /* change size here */
+  height: auto;    /* keeps aspect ratio */
+  display: block;
+  margin: 0 auto;  /* centers horizontally */
 }
 
 /* FOOTER SECTION */
