@@ -11,7 +11,9 @@
   <body data-theme="light">
     <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
     <nav id="desktop-nav">
-      <div class="logo">Axel</div>
+      <div class="logo">
+        <img src="./assets/logo.png" alt="Logo" class="logo-img" />
+      </div>
       <div>
         <ul class="nav-links">
           <li><a href="#about">About</a></li>
@@ -21,20 +23,31 @@
         </ul>
       </div>
     </nav>
-    <nav id="hamburger-nav">
-      <div class="logo">Axel</div>
+    <nav id="hamburger-nav" aria-label="Main navigation">
+      <div class="logo-img">
+        <img src="./assets/logo.png" alt="Logo" class="logo-img" />
+      </div>
+      
       <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
+        <!-- Hamburger icon as button for better accessibility -->
+        <button 
+          class="hamburger-icon" 
+          aria-label="Open menu" 
+          aria-expanded="false" 
+          aria-controls="mobile-menu"
+          onclick="toggleMenu(this)">
           <span></span>
           <span></span>
           <span></span>
-        </div>
-        <div class="menu-links">
+        </button>
+    
+        <!-- Proper unordered list -->
+        <ul class="menu-links" id="mobile-menu">
           <li><a href="#about" onclick="toggleMenu()">About</a></li>
           <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
           <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
           <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-        </div>
+        </ul>
       </div>
     </nav>
     <section id="profile">
@@ -48,7 +61,7 @@
         <div class="btn-container">
           <button
             class="btn btn-color-2"
-            onclick="window.open('./assets/Resume_2026.pdf')"
+            onclick="window.open('./assets/resume.pdf')"
           >
             Download CV
           </button>
@@ -247,7 +260,7 @@
             <div class="btn-container">
               <button
                 class="btn btn-color-2 project-btn"
-                onclick="location.href='https://artisty.my.canva.site/rtistry/'"
+                onclick="location.href='https://drive.google.com/drive/folders/1utjyzdVynkN03ll_kUQSmKHkjJ8UW9fT?usp=sharing'"
               >
                 More
               </button>
@@ -307,6 +320,11 @@
     <section id="contact">
       <p class="section__text__p1">Get in Touch</p>
       <h1 class="title">Contact Me</h1>
+      <img
+        src="./assets/logo.png"
+        alt="Contact icon"
+        class="main contact-icon main-contact-icon"
+        />
       <div class="contact-info-upper-container">
         <div class="contact-info-container">
           <img
@@ -342,5 +360,3 @@
     <script src="script.js"></script>
   </body>
 </html>
-
-
